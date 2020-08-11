@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
 @Slf4j
 //@MapperScan({"com.example.mapper"})
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@PropertySource(value = {"classpath:configuration/config/dev-private.properties"}, encoding = "utf-8")
 public class DemoApplication implements CommandLineRunner, ApplicationContextAware {
 
     ApplicationContext applicationContext2 = null;
@@ -58,6 +60,9 @@ public class DemoApplication implements CommandLineRunner, ApplicationContextAwa
         Object name = SelfProperties.PROPERTIES.get("name");
         Object work = SelfProperties.PROPERTIES.get("work");
         Object like = SelfProperties.PROPERTIES.get("like");
+
+        String name1 = env.getProperty("hide-name");
+        String love = env.getProperty("hide-love");
 
 //        DataBaseOperateMapper bean = applicationContext2.getBean(DataBaseOperateMapper.class);
 

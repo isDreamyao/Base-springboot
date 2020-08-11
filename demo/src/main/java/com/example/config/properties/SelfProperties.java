@@ -16,7 +16,7 @@ import java.util.Properties;
  * @author HuangHaiLong
  * @version 1.0
  * @date 2020-08-10 14:33
- * @description
+ * @description configuration为根目录  下面的.properties配置文件
  */
 @Slf4j
 @Configuration("SelfPropertiesConfiguration")
@@ -58,7 +58,9 @@ public class SelfProperties {
             if (var1.isDirectory()) {
                 loadProperty(pathDispose(var1), fileList);
             } else {
-                files.add(pathDispose(var1));
+                if (var1.getName().endsWith(".properties")) {
+                    files.add(pathDispose(var1));
+                }
             }
         }
         fileList.addAll(files);
