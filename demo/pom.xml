@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--不通过parent方式引入springboot-->
+    <!--<dependencyManagement>-->
+    <!--<dependencies>-->
+    <!--<dependency>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-dependencies</artifactId>-->
+    <!--<version>2.1.1.RELEASE</version>-->
+    <!--<type>pom</type>-->
+    <!--<scope>import</scope>-->
+    <!--</dependency>-->
+    <!--</dependencies>-->
+    <!--</dependencyManagement>-->
+
+
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <mybatis.plus.version>2.1.9</mybatis.plus.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <commons.collections4.version>4.1</commons.collections4.version>
+        <jedis.version>2.9.0</jedis.version>
+        <fastjson.version>1.2.67</fastjson.version>
+        <mysql.connector.java.version>5.1.32</mysql.connector.java.version>
+        <h2.database.version>1.4.199</h2.database.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
+        <mybatis.spring.boot.version>1.3.1</mybatis.spring.boot.version>
+        <alibaba.druid.version>1.1.10</alibaba.druid.version>
+        <resource.delimiter>${}</resource.delimiter>
+
+        <!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 编译时的编码 -->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.mybatis</groupId>-->
+        <!--<artifactId>mybatis</artifactId>-->
+        <!--<version>3.4.5</version>-->
+        <!--</dependency>-->
+        <!-- 添加Druid依赖 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.alibaba</groupId>-->
+        <!--<artifactId>druid-spring-boot-starter</artifactId>-->
+        <!--<version>${alibaba.druid.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.baomidou</groupId>-->
+        <!--<artifactId>mybatis-plus-boot-starter</artifactId>-->
+        <!--<version>3.2.0</version>-->
+        <!--</dependency>-->
+
+
+        <!--<dependency>-->
+        <!--<groupId>com.h2database</groupId>-->
+        <!--<artifactId>h2</artifactId>-->
+        <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+
+        <!-- dbcp2数据库连接池 -->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.commons</groupId>-->
+        <!--<artifactId>commons-dbcp2</artifactId>-->
+        <!--<version>2.7.0</version>-->
+        <!--</dependency>-->
+
+
+        <!-- csp0数据库连接池 -->
+        <!--<dependency>-->
+        <!--<groupId>c3p0</groupId>-->
+        <!--<artifactId>c3p0</artifactId>-->
+        <!--<version>0.9.1.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.mchange</groupId>-->
+        <!--<artifactId>c3p0</artifactId>-->
+        <!--<version>${c3p0.version}</version>-->
+        <!--</dependency>-->
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons.collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <!-- slf4j  LoggerFactory-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-test</artifactId>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-test</artifactId>-->
+        <!--<version>RELEASE</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <resources>
+            <!-- 排除所有的 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>configuration/**</exclude>
+                </excludes>
+            </resource>
+            <!-- 再引入我们要的  这个是主 directory -->
+            <resource>
+                <directory>src/main/resources/configuration/${env}</directory>
+                <targetPath>configuration</targetPath>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <filters>
+            <filter>src/main/resources/configuration/valueReplace/value-copy.properties</filter>
+        </filters>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <!--<configuration>-->
+                <!--<fork>true</fork>-->
+                <!--&lt;!&ndash; spring-boot:run 中文乱码解决 &ndash;&gt;-->
+                <!--<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>-->
+                <!--</configuration>-->
+                <!--不通过parent方式引入springboot-->
+                <!--<executions>-->
+                <!--<execution>-->
+                <!--<goals>-->
+                <!--此时介入进来-->
+                <!--<goal>repackage</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+                <!--<hhl>devhhl</hhl>-->
+                <hide-love>smile</hide-love>
+                <hide-name>silence</hide-name>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/configuration/dev-private</directory>
+                        <targetPath>configuration/config</targetPath>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>sit</id>
+            <properties>
+                <env>sit</env>
+                <hhl>sithhl</hhl>
+            </properties>
+            <!--<build>-->
+            <!--<resources>-->
+            <!--<resource>-->
+            <!--<directory>src/main/resources/configuration/sit</directory>-->
+            <!--<targetPath>configuration</targetPath>-->
+            <!--</resource>-->
+            <!--</resources>-->
+            <!--</build>-->
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+                <hhl>prodhhl</hhl>
+            </properties>
+            <!--<build>-->
+            <!--<resources>-->
+            <!--<resource>-->
+            <!--<directory>src/main/resources/configuration/prod</directory>-->
+            <!--<targetPath>configuration</targetPath>-->
+            <!--</resource>-->
+            <!--</resources>-->
+            <!--</build>-->
+        </profile>
+    </profiles>
+
+</project>

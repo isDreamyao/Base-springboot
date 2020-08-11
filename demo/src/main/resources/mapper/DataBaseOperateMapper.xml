@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.DataBaseOperateMapper">
+
+    <select id="selectOilStation" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT * FROM tf_b_oilcard_station t
+        WHERE t.DELETE_FLAG = 0 AND t.OIL_STATE = 1
+        <if test="stationName != null and stationName != ''">
+            <bind name="_stationName" value="'%' + stationName + '%'"/>
+            AND t.STATION_NAME LIKE #{_stationName}
+        </if>
+
+    </select>
+
+</mapper>
