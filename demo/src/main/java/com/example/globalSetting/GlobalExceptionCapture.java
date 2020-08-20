@@ -1,6 +1,7 @@
-package com.example.exception;
+package com.example.globalSetting;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

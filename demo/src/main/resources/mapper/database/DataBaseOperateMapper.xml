@@ -3,7 +3,7 @@
 
 <mapper namespace="com.example.mapper.DataBaseOperateMapper">
 
-    <select id="selectOilStation" resultType="com.alibaba.fastjson.JSONObject">
+    <select id="selectOilStation" resultType="oilStation">
         SELECT * FROM tf_b_oilcard_station t
         WHERE t.DELETE_FLAG = 0 AND t.OIL_STATE = 1
         <if test="stationName != null and stationName != ''">
