@@ -4,7 +4,18 @@
 <mapper namespace="com.example.mapper.DataBaseOperateMapper">
 
     <select id="selectOilStation" resultType="oilStation">
-        SELECT * FROM tf_b_oilcard_station t
+        SELECT
+        t.ID,
+        t.STATION_ID stationId,
+        t.STATION_SOURCE stationSource,
+        t.STATION_TYPE stationType,
+        t.MERCHANT_ID merchantId,
+        t.MERCHANT_NAME merchantName,
+        t.STATION_NAME stationName,
+        t.STATION_SPACE stationSpace,
+        t.STATION_MOBILE stationMobile
+
+        FROM tf_b_oilcard_station t
         WHERE t.DELETE_FLAG = 0 AND t.OIL_STATE = 1
         <if test="stationName != null and stationName != ''">
             <bind name="_stationName" value="'%' + stationName + '%'"/>

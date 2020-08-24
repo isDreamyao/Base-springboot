@@ -2,7 +2,6 @@ package com.example.config.dataSource.multiDataSourceConfig;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -37,10 +36,10 @@ public class DynamicDataSourceAspect {
         DataSourceAnnotation adAnno = method.getAnnotation(DataSourceAnnotation.class);
         if (adAnno == null) {
             DynamicDataSourceConfig.setCurrentDataSourceName(DataSourceNames.write);
-            log.error("set datasource is default");
+            log.error("******************  dynamic  datasource  switchover : write  ******************");
         } else {
             DynamicDataSourceConfig.setCurrentDataSourceName(adAnno.name());
-            log.error("set datasource is " + adAnno.name());
+            log.error("******************  dynamic  datasource  switchover : {}  ******************", adAnno.name());
         }
 
         long beginTime = System.currentTimeMillis();
@@ -50,7 +49,7 @@ public class DynamicDataSourceAspect {
             result = point.proceed();
         } finally {
             DynamicDataSourceConfig.clearCurrentDataSourceName();
-            log.error("clean datasource");
+            log.error("******************  clean datasource  ******************");
         }
 
         long time = System.currentTimeMillis() - beginTime;
@@ -58,10 +57,9 @@ public class DynamicDataSourceAspect {
         // 请求类名
         String clzName = point.getTarget().getClass().getName();
 
-        Signature signature1 = point.getSignature();
-        String name = signature1.getName();
+        String methodName = point.getSignature().getName();
 
-        log.info("signature：{}  name：{}  方法：{}    执行时长：{}", signature1, name, point.getTarget().toString(), time);
+        log.info("Class: {}  method: {}  执行时长: {} ms  result: {}", clzName, methodName, time, result);
 
         return result;
     }

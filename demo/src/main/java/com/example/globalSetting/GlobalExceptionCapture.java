@@ -25,6 +25,8 @@ public class GlobalExceptionCapture {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public JSONObject exception(Exception e) {
+        log.error("Exception: {}", e);
+
         JSONObject res = new JSONObject();
         res.put("message", e.getMessage());
         res.put("cause", e.getCause());
@@ -39,10 +41,11 @@ public class GlobalExceptionCapture {
     @ExceptionHandler(BaseException.class)
     @ResponseBody
     public JSONObject baseException(BaseException e) {
+        log.error("Exception: {}", e);
+
         JSONObject res = new JSONObject();
         res.put("message", e.getMessage());
         res.put("cause", e.getCause());
-        log.error("Basexception ： {}", e);
         return res;
     }
 

@@ -1,5 +1,7 @@
 package com.example.testcontroller;
 
+import com.example.config.dataSource.multiDataSourceConfig.DataSourceAnnotation;
+import com.example.config.dataSource.multiDataSourceConfig.DataSourceNames;
 import com.example.entity.OilStationEntity;
 import com.example.exception.BaseException;
 import com.example.mapper.DataBaseOperateMapper;
@@ -47,8 +49,26 @@ public class TestController {
 
         List<OilStationEntity> oilStationEntityList = dataBaseOperateMapper.selectOilStation(parmas);
 
-        System.out.println(oilStationEntityList);
+        for (OilStationEntity oilStationEntity : oilStationEntityList) {
 
+            System.out.println(oilStationEntity);
+
+        }
+    }
+
+    @DataSourceAnnotation(name = DataSourceNames.write)
+    @GetMapping(value = "/testDataSource2")
+    public void test2(HttpServletRequest request) {
+        Map<String, Object> parmas = new HashMap<>();
+        parmas.put("stationName", request.getParameter("stationName"));
+
+        List<OilStationEntity> oilStationEntityList = dataBaseOperateMapper.selectOilStation(parmas);
+
+        for (OilStationEntity oilStationEntity : oilStationEntityList) {
+
+            System.out.println(oilStationEntity);
+
+        }
     }
 
 }
