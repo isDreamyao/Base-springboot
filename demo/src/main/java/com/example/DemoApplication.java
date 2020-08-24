@@ -12,7 +12,6 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 //@MapperScan({"com.example.mapper"})
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @PropertySource(value = {"classpath:configuration/config/dev-private.properties"}, encoding = "utf-8")
-
 public class DemoApplication {
 
     public static void main(String[] args) {

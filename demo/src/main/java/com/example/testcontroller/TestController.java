@@ -1,20 +1,17 @@
 package com.example.testcontroller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.entity.OilStationEntity;
 import com.example.exception.BaseException;
 import com.example.mapper.DataBaseOperateMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,9 +41,9 @@ public class TestController {
     }
 
     @GetMapping(value = "/testDataSource")
-    public void test() {
+    public void test(HttpServletRequest request) {
         Map<String, Object> parmas = new HashMap<>();
-        parmas.put("stationName", "商户名称");
+        parmas.put("stationName", request.getParameter("stationName"));
 
         List<OilStationEntity> oilStationEntityList = dataBaseOperateMapper.selectOilStation(parmas);
 
