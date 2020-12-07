@@ -59,7 +59,7 @@ public class DynamicDataSourceAspect {
 
         String methodName = point.getSignature().getName();
 
-        log.info("Class: {}  method: {}  执行时长: {} ms  result: {}", clzName, methodName, time, result);
+        log.info("Class: {}  Method: {}  执行时长: {} ms  Result: {}", clzName, methodName, time, result);
 
         return result;
     }

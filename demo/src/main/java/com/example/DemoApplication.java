@@ -1,6 +1,7 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Slf4j
-//@MapperScan({"com.example.mapper"})
+@MapperScan({"com.example.mapper"})
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @PropertySource(value = {"classpath:configuration/config/dev-private.properties"}, encoding = "utf-8")
 public class DemoApplication {

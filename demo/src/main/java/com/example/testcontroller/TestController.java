@@ -5,6 +5,8 @@ import com.example.config.dataSource.multiDataSourceConfig.DataSourceNames;
 import com.example.entity.OilStationEntity;
 import com.example.exception.BaseException;
 import com.example.mapper.DataBaseOperateMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -58,17 +60,14 @@ public class TestController {
 
     @DataSourceAnnotation(name = DataSourceNames.write)
     @GetMapping(value = "/testDataSource2")
-    public void test2(HttpServletRequest request) {
+    public List<OilStationEntity> test2(HttpServletRequest request) {
         Map<String, Object> parmas = new HashMap<>();
         parmas.put("stationName", request.getParameter("stationName"));
 
+        Page<Object> objects = PageHelper.startPage(0, 15);
         List<OilStationEntity> oilStationEntityList = dataBaseOperateMapper.selectOilStation(parmas);
 
-        for (OilStationEntity oilStationEntity : oilStationEntityList) {
-
-            System.out.println(oilStationEntity);
-
-        }
+        return oilStationEntityList;
     }
 
 }
